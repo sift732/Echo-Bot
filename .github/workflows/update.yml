@@ -16,4 +16,4 @@ jobs:
 
     - name: Execute update script
       run: |
-        bash ./update.sh
+        bash ./update_check.sh
