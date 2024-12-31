@@ -1,4 +1,4 @@
-name: アップデート検出
+name: Update and Deploy Echo-Bot
 
 on:
   push:
@@ -10,10 +10,15 @@ on:
 jobs:
   update:
     runs-on: ubuntu-latest
+
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Execute update script
+    - name: Run update check script
       run: |
         bash ./update_check.sh
+
+    - name: Run update script
+      run: |
+        bash ./update.sh
