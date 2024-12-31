@@ -17,8 +17,4 @@ jobs:
 
     - name: Run update check script
       run: |
-        bash ./update_check.sh
-
-    - name: Run update script
-      run: |
-        bash ./update.sh
+        bash $HOME/update_check.sh
