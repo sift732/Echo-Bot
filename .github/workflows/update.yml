@@ -13,6 +13,7 @@ jobs:
       - name: リポジトリをチェックアウト
         uses: actions/checkout@v3
 
+      # Server1 用の SSH キーを設定し、デプロイ
       - name: Server1 用の SSH キーを設定
         uses: webfactory/ssh-agent@v0.5.3
         with:
@@ -21,10 +22,11 @@ jobs:
       - name: Server1 にデプロイ
         run: |
           echo "Server1 にファイルをコピー中..."
-          scp -r ./* ${{ secrets.SERVER_USER }}@${{ secrets.SERVER1_HOST }}:~/echo-bot/
+          scp -r ./* ${{ secrets.SERVER1_USER }}@${{ secrets.SERVER1_HOST }}:~/echo-bot/
           echo "Server1 で update.sh を実行中..."
-          ssh ${{ secrets.SERVER_USER }}@${{ secrets.SERVER1_HOST }} '~/echo-bot/update.sh'
+          ssh ${{ secrets.SERVER1_USER }}@${{ secrets.SERVER1_HOST }} '~/echo-bot/update.sh'
 
+      # Server2 用の SSH キーを設定し、デプロイ
       - name: Server2 用の SSH キーを設定
         uses: webfactory/ssh-agent@v0.5.3
         with:
@@ -33,6 +35,6 @@ jobs:
       - name: Server2 にデプロイ
         run: |
           echo "Server2 にファイルをコピー中..."
-          scp -r ./* ${{ secrets.SERVER_USER }}@${{ secrets.SERVER2_HOST }}:~/echo-bot/
+          scp -r ./* ${{ secrets.SERVER2_USER }}@${{ secrets.SERVER2_HOST }}:~/echo-bot/
           echo "Server2 で update.sh を実行中..."
-          ssh ${{ secrets.SERVER_USER }}@${{ secrets.SERVER2_HOST }} '~/echo-bot/update.sh'
+          ssh ${{ secrets.SERVER2_USER }}@${{ secrets.SERVER2_HOST }} '~/echo-bot/update.sh'
