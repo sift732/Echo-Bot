@@ -1,2 +1,4 @@
 # echo-Bot
-Node.js Discord.js@14
+Respect   : @taka055
+reference : TakasumiBOTv2
+
